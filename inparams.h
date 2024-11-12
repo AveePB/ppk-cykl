@@ -15,7 +15,7 @@ namespace inparams {
     extern std::string cycleFile;
 
     // Declare function
-    void load(std::vector<std::string> params);
+    void load(std::vector<std::string>& params);
 
 }
 #endif
