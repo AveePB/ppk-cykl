@@ -21,9 +21,15 @@
     <ClCompile Include="inparams.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="graphs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inparams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
