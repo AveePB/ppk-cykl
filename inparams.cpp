@@ -1,4 +1,10 @@
 #include "inparams.h"
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <regex>
 
 namespace inparams {
 
@@ -16,11 +22,11 @@ namespace inparams {
 
         // Go through parameters
         for (int i = 1; i < params.size(); i++) {
-            
+
             // Load input filename
             if (params[i] == "-i" && (i + 1 < params.size()))
                 inFile = params[i + 1];
-            
+
             // Load output filename
             else if (params[i] == "-o" && (i + 1 < params.size()))
                 outFile = params[i + 1];
@@ -47,3 +53,4 @@ namespace inparams {
         }
     }
 }
+

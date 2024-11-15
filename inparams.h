@@ -2,6 +2,8 @@
 #ifndef PARAMS_H
 #define PARAMS_H
 
+#include <fstream>
+#include <sstream>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,6 +26,5 @@ namespace inparams {
      * @param params: a vector of command-line arguments (each as a string)
      */
     void load(std::vector<std::string>& params);
-
 }
 #endif
