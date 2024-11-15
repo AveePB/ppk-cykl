@@ -11,10 +11,10 @@ int main(int argc, char** argv) {
 
 	// Construct graph from scratch
 	graphs::Graph graph;
-	bool isInputFile = graph.load(inparams::inFile);
+	bool isDataLoaded = graph.load(inparams::inFile);
 
 	// Handle missing input file
-	if (!isInputFile) {
+	if (!isDataLoaded) {
 		std::string ans;
 		std::cout << "Niewczytano pliku z grafem...\n";
 		std::cout << "Jesli chcesz kontynuowac, napisz \"tak\" ";
@@ -24,8 +24,12 @@ int main(int argc, char** argv) {
 		if (ans != "tak") return 0;
 	}
 
+	// Save current graph state
+	graph.save(inparams::outFile);
+
 	char c;
 	std::cin >> c;
+	
 
 	return 0;
 }

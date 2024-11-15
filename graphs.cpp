@@ -71,6 +71,24 @@ namespace graphs {
         return false;
     }
 
-    void Graph::save(std::string filename) { }
+    void Graph::save(std::string filename) { 
+        // Declare variables
+        std::ofstream file(filename);
+
+        // Go through all nodes in graph
+        for (auto it = connections.begin(); it != connections.end(); it++) {
+            
+            // Get vertice
+            int v = it->first;
+
+            // Save edge
+            for (Edge e : connections[v])
+                file << v << " -> " << e.vertice << " : " << e.weight << ",\n";
+        }
+
+        // Close output file
+        file.close();
+    }
+
     void Graph::detectCycles(std::string filename) { }
 }
