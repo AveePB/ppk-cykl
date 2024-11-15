@@ -46,7 +46,7 @@ namespace graphs {
             if (!parseEdge(edge, from, to, weight)) return false;
             
             // Add new element
-            connections[from].push_back({ to, weight });
+            connections[from].push_back(Edge(to, weight));
         }
         return true;
     }
