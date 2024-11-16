@@ -1,11 +1,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <chrono>
+#include <thread>
 #include "inparams.h"
 #include "graphs.h"
 #include "graphEditor.h"
 
 // Declare constants
+const int TIME_BREAK = 2500; // 2.5 seconds
 const char SAVE_AND_EXIT = '0';
 const char ADD_NEW_VERTICE = '1';
 const char REMOVE_VERTICE = '2';
@@ -47,9 +50,10 @@ int main(int argc, char** argv) {
 		char command;
 
 		// Reset terminal window
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 		system("cls");
 		printHelpMenu();
-		std::cin.clear();
 
 		// Function launcher
 		std::cout << "Wykonaj funkcje: ";
@@ -69,10 +73,14 @@ int main(int argc, char** argv) {
 
 		else if (command == UPDATE_EDGE_WEIGHT) grapheditor::updateEdgeWeight(graph);
 
+		else if (command == DETECT_CYCLES) { }
+
 		else if (command == FIND_SHORTEST_PATH) { }
 
 		else if (command == FIND_LONGEST_PATH) { }
 
+		// Take break for a few seconds
+		std::this_thread::sleep_for(std::chrono::milliseconds(TIME_BREAK));
 	}
 
 	// Save current graph state

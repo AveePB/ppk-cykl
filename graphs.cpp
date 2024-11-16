@@ -47,6 +47,8 @@ namespace graphs {
             
             // Add new element
             connections[from].push_back(Edge(to, weight));
+            if (connections.find(to) == connections.end()) 
+                connections[to] = std::vector<Edge>();
         }
         return true;
     }
