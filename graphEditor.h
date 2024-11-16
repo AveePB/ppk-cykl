@@ -42,6 +42,4 @@ namespace grapheditor {
      */
     void updateEdgeWeight(graphs::Graph& g);
 }
-}
-
 #endif
