@@ -3,6 +3,7 @@
 #include <vector>
 #include "inparams.h"
 #include "graphs.h"
+#include "graphEditor.h"
 
 // Declare constants
 const char SAVE_AND_EXIT = '0';
@@ -50,7 +51,7 @@ int main(int argc, char** argv) {
 		printHelpMenu();
 		std::cin.clear();
 
-		// Function luncher
+		// Function launcher
 		std::cout << "Wykonaj funkcje: ";
 		std::cin >> command;
 		if (std::cin.fail()) continue;
