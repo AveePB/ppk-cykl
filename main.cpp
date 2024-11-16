@@ -57,19 +57,17 @@ int main(int argc, char** argv) {
 		if (std::cin.fail()) continue;
 
 		// Task handler
-		if (command == SAVE_AND_EXIT) {
-			break;
-		}
+		if (command == SAVE_AND_EXIT) break;
 
-		else if (command == ADD_NEW_VERTICE) { }
+		else if (command == ADD_NEW_VERTICE) grapheditor::addNewVertice(graph);
 
-		else if (command == REMOVE_VERTICE) { }
-		
-		else if (command == ADD_NEW_EDGE) { }
+		else if (command == REMOVE_VERTICE) grapheditor::removeVertice(graph);
 
-		else if (command == REMOVE_EDGE) { }
-		
-		else if (command == UPDATE_EDGE_WEIGHT) { }
+		else if (command == ADD_NEW_EDGE) grapheditor::addNewEdge(graph);
+
+		else if (command == REMOVE_EDGE) grapheditor::removeEdge(graph);
+
+		else if (command == UPDATE_EDGE_WEIGHT) grapheditor::updateEdgeWeight(graph);
 
 		else if (command == FIND_SHORTEST_PATH) { }
 
