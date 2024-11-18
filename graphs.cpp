@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <regex>
+#include "graphCycles.h"
 
 namespace graphs {
 
@@ -91,6 +92,4 @@ namespace graphs {
         // Close output file
         file.close();
     }
-
-    void Graph::detectCycles(std::string filename) { }
 }

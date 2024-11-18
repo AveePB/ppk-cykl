@@ -6,6 +6,7 @@
 #include "inparams.h"
 #include "graphs.h"
 #include "graphEditor.h"
+#include "graphAlgorithms.h"
 
 // Declare constants
 const int TIME_BREAK = 2500; // 2.5 seconds
@@ -73,11 +74,11 @@ int main(int argc, char** argv) {
 
 		else if (command == UPDATE_EDGE_WEIGHT) grapheditor::updateEdgeWeight(graph);
 
-		else if (command == DETECT_CYCLES) { }
+		else if (command == DETECT_CYCLES) graphalgo::detectCycles(graph, inparams::outFile);
 
-		else if (command == FIND_SHORTEST_PATH) { }
+		else if (command == FIND_SHORTEST_PATH) graphalgo::findShortestCyclicPath(graph);
 
-		else if (command == FIND_LONGEST_PATH) { }
+		else if (command == FIND_LONGEST_PATH) graphalgo::findLongestCyclicPath(graph);
 
 		// Take break for a few seconds
 		std::this_thread::sleep_for(std::chrono::milliseconds(TIME_BREAK));

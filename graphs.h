@@ -54,17 +54,6 @@ namespace graphs {
 		 * @param filename The path to the file to save the graph data.
 		 */
 		void save(std::string filename);
-
-		/**
-		 * @brief Detects cycles within the graph and saves the result to a file.
-		 *
-		 * This function performs a cycle detection algorithm on the graph and writes any cycles found to the specified file.
-		 * @param filename The path to the file to save cycle detection results.
-		 */
-		void detectCycles(std::string filename);
-
-		// Declare update functions
-		// ...
 	};
 }
 #endif

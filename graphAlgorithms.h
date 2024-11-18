@@ -11,6 +11,16 @@ namespace graphalgo {
 	extern const int INF, NINF;
 
 	/**
+	 * @brief Detects cycles within the graph and saves the result to a file.
+     *
+     * This function performs a cycle detection algorithm on the graph and writes any cycles found to the specified file.
+     * 
+	 * @param g The directed graph represented as an adjacency list with weighted edges.
+     * @param filename The path to the file to save cycle detection results.
+	*/
+	void detectCycles(graphs::Graph& g, std::string filename);
+
+	/**
 	 * @brief Finds and outputs the longest cyclic path in the graph based on edge weights.
 	 *
 	 * This function analyzes the graph to detect cycles and calculates the total weight

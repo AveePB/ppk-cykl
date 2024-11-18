@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="graphAlgorithms.cpp" />
+    <ClCompile Include="graphCycles.cpp" />
     <ClCompile Include="graphEditor.cpp" />
     <ClCompile Include="graphs.cpp" />
     <ClCompile Include="inparams.cpp" />
@@ -135,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graphAlgorithms.h" />
+    <ClInclude Include="graphCycles.h" />
     <ClInclude Include="graphEditor.h" />
     <ClInclude Include="graphs.h" />
     <ClInclude Include="inparams.h" />

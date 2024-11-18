@@ -8,6 +8,8 @@ namespace graphalgo {
 	const int NINF = -2e9;
 
 	// Declare functions
+	void detectCycles(graphs::Graph& g, std::string filename) { }
+
 	void findLongestCyclicPath(graphs::Graph& g) { }
 
 	void findShortestCyclicPath(graphs::Graph& g) { }
