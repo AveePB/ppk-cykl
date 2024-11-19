@@ -35,7 +35,49 @@ namespace graphalgo {
 		std::cout << "Wykryte cykle zostaly zapisane do pliku " << filename << '\n';
 	}
 
-	void findLongestCyclicPath(graphs::Graph& g) { }
+	void findLongestCyclicPath(graphs::Graph& g) { 
+		// Initialize variables
+		std::vector<graphcycles::Cycle> c;
+		std::vector<int> bestPath;
+		int bestCost = NINF;
 
-	void findShortestCyclicPath(graphs::Graph& g) { }
+		// Analyze cycles
+		graphcycles::detect(c, g);
+		for (auto a : c) {
+			// Ignore cycle
+			if (a.cost <= bestCost) continue;
+
+			// Update cycle
+			bestCost = a.cost;
+			bestPath = std::vector<int>(a.path);
+		}
+
+		std::cout << "Najdluzsza sciezka cykliczna o sumie (" << bestCost << "):\n";
+		for (auto v : bestPath)
+			std::cout << v << ' ';
+		std::cout << '\n';
+	}
+
+	void findShortestCyclicPath(graphs::Graph& g) { 
+		// Initialize variables
+		std::vector<graphcycles::Cycle> c;
+		std::vector<int> bestPath;
+		int bestCost = INF;
+
+		// Analyze cycles
+		graphcycles::detect(c, g);
+		for (auto a : c) {
+			// Ignore cycle
+			if (a.cost >= bestCost) continue;
+
+			// Update cycle
+			bestCost = a.cost;
+			bestPath = std::vector<int>(a.path);
+		}
+
+		std::cout << "Najkrotsza sciezka cykliczna o sumie (" << bestCost << "):\n";
+		for (auto v : bestPath)
+			std::cout << v << ' ';
+		std::cout << '\n';
+	}
 }
