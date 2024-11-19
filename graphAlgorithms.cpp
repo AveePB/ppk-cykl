@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <set>
 #include "graphAlgorithms.h"
 #include "graphCycles.h"
@@ -11,9 +12,10 @@ namespace graphalgo {
 
 	// Declare functions
 	void detectCycles(graphs::Graph& g, std::string filename) { 
-		// Initialize data structures
+		// Initialize variables
 		std::vector<graphcycles::Cycle> c;
 		std::set<std::string > uniqueMasks;
+		std::ofstream outFile(filename);
 
 		graphcycles::detect(c, g);
 
@@ -21,13 +23,16 @@ namespace graphalgo {
 			// Cycle already saved
 			if (uniqueMasks.count(a.mask)) continue;
 
+			// Save new cycle
 			uniqueMasks.insert(a.mask);
-			for (auto v : a.path)
-				std::cout << v << ' ';
-			std::cout << '\n';
+
+			for (auto vertice : a.path) {
+				outFile << vertice << ' ';
+			}
+			outFile << '\n';
 		}
-
-
+		outFile.close();
+		std::cout << "Wykryte cykle zostaly zapisane do pliku " << filename << '\n';
 	}
 
 	void findLongestCyclicPath(graphs::Graph& g) { }

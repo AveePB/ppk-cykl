@@ -74,7 +74,7 @@ int main(int argc, char** argv) {
 
 		else if (command == UPDATE_EDGE_WEIGHT) grapheditor::updateEdgeWeight(graph);
 
-		else if (command == DETECT_CYCLES) graphalgo::detectCycles(graph, inparams::outFile);
+		else if (command == DETECT_CYCLES) graphalgo::detectCycles(graph, inparams::cycleFile);
 
 		else if (command == FIND_SHORTEST_PATH) graphalgo::findShortestCyclicPath(graph);
 
