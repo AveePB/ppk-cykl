@@ -1,16 +1,32 @@
 #include <iostream>
+#include <algorithm>
 #include <stack>
 #include "graphCycles.h"
 #include "graphs.h"
 
 namespace graphcycles {
 
-	Cycle::Cycle(std::vector<int> path, int cost) : path(path), cost(cost) {}
+	// Data structures
+	std::map<int, bool> visited;
+	std::stack<std::pair<int, int>> currPath;
 
-	static void detect(std::vector<Cycle>& c, graphs::Graph& g) {
+	Cycle::Cycle(std::vector<int> path, int cost) {
+		// Save path & traversal cost
+		std::reverse(path.begin(), path.end());
+		this->path = std::vector<int>(path);
+		this->cost = cost;
+
+		// Create mask
+		std::sort(path.begin(), path.end()-1);
+		this->mask = "";
+
+		for (int i = 0; i < path.size() - 1; i++) 
+			mask += std::to_string(path[i]) + ' ';
+	}
+
+	void detect(std::vector<Cycle>& c, graphs::Graph& g) {
 		// Resest data structures
 		while (!currPath.empty()) currPath.pop();
-		analyzed.clear();
 		visited.clear();
 
 		// Try to run dfs on each vertice
@@ -20,9 +36,8 @@ namespace graphcycles {
 		}
 	}
 
-	static void dfs(std::vector<Cycle>& c, graphs::Graph& g, int v, int cost) {
+	void dfs(std::vector<Cycle>& c, graphs::Graph& g, int v, int cost) {
 		// Vertice already processed
-		if (analyzed[v]) return;
 
 		currPath.push({ v, cost });
 
@@ -63,8 +78,11 @@ namespace graphcycles {
 		// Keep looking
 		else {
 			// Visit all neighbors 
-			for (graphs::Edge e : g.connections[v])
+			visited[v] = true;
+			for (graphs::Edge e : g.connections[v]) {
 				dfs(c, g, e.vertice, e.weight);
+			}
+			visited[v] = false;
 		}
 
 		currPath.pop();
