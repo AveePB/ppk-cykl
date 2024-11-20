@@ -25,7 +25,7 @@ namespace graphalgo {
 
 			// Save new cycle
 			uniqueMasks.insert(a.mask);
-
+			outFile << "Suma cyklu: " << a.cost << ", sciezka: ";
 			for (auto vertice : a.path) {
 				outFile << vertice << ' ';
 			}
@@ -52,10 +52,15 @@ namespace graphalgo {
 			bestPath = std::vector<int>(a.path);
 		}
 
-		std::cout << "Najdluzsza sciezka cykliczna o sumie (" << bestCost << "):\n";
-		for (auto v : bestPath)
-			std::cout << v << ' ';
-		std::cout << '\n';
+		if (bestCost != NINF) {
+			std::cout << "Najdluzsza sciezka cykliczna o sumie (" << bestCost << "):\n";
+			for (auto v : bestPath)
+				std::cout << v << ' ';
+			std::cout << '\n';
+		}
+		else {
+			std::cout << "Graf nie posiada zadnych cylki!\n";
+		}
 	}
 
 	void findShortestCyclicPath(graphs::Graph& g) { 
@@ -74,10 +79,14 @@ namespace graphalgo {
 			bestCost = a.cost;
 			bestPath = std::vector<int>(a.path);
 		}
-
-		std::cout << "Najkrotsza sciezka cykliczna o sumie (" << bestCost << "):\n";
-		for (auto v : bestPath)
-			std::cout << v << ' ';
-		std::cout << '\n';
+		if (bestCost != INF) {
+			std::cout << "Najkrotsza sciezka cykliczna o sumie (" << bestCost << "):\n";
+			for (auto v : bestPath)
+				std::cout << v << ' ';
+			std::cout << '\n';
+		}
+		else {
+			std::cout << "Graf nie posiada zadnych cylki!\n";
+		}
 	}
 }
