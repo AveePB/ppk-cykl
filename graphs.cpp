@@ -15,8 +15,11 @@ namespace graphs {
         std::string ans;
 
         // Try to access file
-        if (!file) return false;
-        
+        if (!file) {
+            connections.clear();
+            return false;
+        }
+
         // Create string to store clean data
         std::string formatedData = "";
         char ch;
@@ -44,7 +47,10 @@ namespace graphs {
             int from, to, weight;
 
             // Failed to prase edge
-            if (!parseEdge(edge, from, to, weight)) return false;
+            if (!parseEdge(edge, from, to, weight)) {
+                connections.clear();
+                return false;
+            }
             
             // Add new element
             connections[from].push_back(Edge(to, weight));
