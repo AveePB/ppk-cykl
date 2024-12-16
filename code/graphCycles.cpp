@@ -6,10 +6,6 @@
 
 namespace graphcycles {
 
-	// Data structures
-	std::map<int, bool> visited;
-	std::stack<std::pair<int, int>> currPath;
-
 	Cycle::Cycle(std::vector<int> path, int cost) {
 		// Save path & traversal cost
 		std::reverse(path.begin(), path.end());
@@ -25,20 +21,19 @@ namespace graphcycles {
 	}
 
 	void detect(std::vector<Cycle>& c, graphs::Graph& g) {
-		// Resest data structures
-		while (!currPath.empty()) currPath.pop();
-		visited.clear();
+		// Data structures
+		std::map<int, bool> visited;
+		std::stack<std::pair<int, int>> currPath;
 
 		// Try to run dfs on each vertice
 		for (auto a : g.connections) {
 			int vertice = a.first;
-			dfs(c, g, vertice, 0);
+			dfs(currPath, visited, c, g, vertice, 0);
 		}
 	}
 
-	void dfs(std::vector<Cycle>& c, graphs::Graph& g, int v, int cost) {
+	void dfs(std::stack<std::pair<int, int>>& currPath, std::map<int, bool>& visited, std::vector<Cycle>& c, graphs::Graph& g, int v, int cost) {
 		// Vertice already processed
-
 		currPath.push({ v, cost });
 
 		// Detected new cycle
@@ -80,7 +75,7 @@ namespace graphcycles {
 			// Visit all neighbors 
 			visited[v] = true;
 			for (graphs::Edge e : g.connections[v]) {
-				dfs(c, g, e.vertice, e.weight);
+				dfs(currPath, visited, c, g, e.vertice, e.weight);
 			}
 			visited[v] = false;
 		}

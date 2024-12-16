@@ -10,11 +10,6 @@
 
 namespace inparams {
 
-    // Declare global variables
-    extern std::string inFile;
-    extern std::string outFile;
-    extern std::string cycleFile;
-
     /**
      * @brief Parses command-line parameters to set file paths for input, output, and cycle files.
      *
@@ -25,6 +20,6 @@ namespace inparams {
      *
      * @param params: a vector of command-line arguments (each as a string)
      */
-    void load(std::vector<std::string>& params);
+    void load(std::vector<std::string>& params, std::string& inFile, std::string& outFile, std::string cycleFile);
 }
 #endif

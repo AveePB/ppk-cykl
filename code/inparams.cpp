@@ -8,17 +8,8 @@
 
 namespace inparams {
 
-    // Define global variables
-    std::string inFile;
-    std::string outFile;
-    std::string cycleFile;
-
     // Declare load function
-    void load(std::vector<std::string>& params) {
-        // Reinitialize variables
-        inFile = "";
-        outFile = "";
-        cycleFile = "";
+    void load(std::vector<std::string>& params, std::string& inFile, std::string& outFile, std::string cycleFile) {
 
         // Go through parameters
         for (int i = 1; i < params.size(); i++) {

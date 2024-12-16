@@ -28,11 +28,12 @@ void printHelpMenu();
 int main(int argc, char** argv) {
 	// Load file arguments
 	std::vector<std::string> args(argv, argv + argc);
-	inparams::load(args);
+	std::string inFile, outFile, cycFile;
+	inparams::load(args, inFile, outFile, cycFile);
 
 	// Construct graph from scratch
 	graphs::Graph graph;
-	bool isDataLoaded = graph.load(inparams::inFile);
+	bool isDataLoaded = graph.load(inFile);
 
 	// Handle missing input file
 	if (!isDataLoaded) {
@@ -74,7 +75,7 @@ int main(int argc, char** argv) {
 
 		else if (command == UPDATE_EDGE_WEIGHT) grapheditor::updateEdgeWeight(graph);
 
-		else if (command == DETECT_CYCLES) graphalgo::detectCycles(graph, inparams::cycleFile);
+		else if (command == DETECT_CYCLES) graphalgo::detectCycles(graph, cycFile);
 
 		else if (command == FIND_SHORTEST_PATH) graphalgo::findShortestCyclicPath(graph);
 
@@ -85,7 +86,7 @@ int main(int argc, char** argv) {
 	}
 
 	// Save current graph state
-	graph.save(inparams::outFile);
+	graph.save(outFile);
 
 	return 0;
 }

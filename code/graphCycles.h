@@ -24,10 +24,6 @@ namespace graphcycles {
 		Cycle(std::vector<int> path, int cost);
 	};
 
-	// Data structures
-	extern std::map<int, bool> visited;
-	extern std::stack<std::pair<int, int>> currPath;
-
 	/**
 	 * @brief Analyzes a graph in order to find all unique cycles and its costs.
 	 * 
@@ -44,7 +40,7 @@ namespace graphcycles {
 	 * @param v The current vertice.
 	 * @param cost The required cost to get to this vertice. 
 	 */
-	void dfs(std::vector<Cycle>& c, graphs::Graph& g, int v, int cost);
+	void dfs(std::stack<std::pair<int, int>>& currPath, std::map<int, bool>& visited, std::vector<Cycle>& c, graphs::Graph& g, int v, int cost);
 }
 
 #endif 
